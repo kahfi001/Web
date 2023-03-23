@@ -213,7 +213,21 @@
 
   /* HEADER */
   .site-header {
-    padding-top: 20px;
+    padding-top: 10px;
+    padding-bottom: 35px;
+  }
+
+  .scroll-header {
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: 0.4s;
+  }
+
+  .scroll-header .site-title {
+    color: #fff;
+  }
+
+  .scroll-header .slicknav_icon-bar {
+    background-color: #fff;
   }
 
   .navbar-header .site-title {

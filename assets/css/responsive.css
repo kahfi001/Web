@@ -213,8 +213,7 @@
 
   /* HEADER */
   .site-header {
-    padding-top: 10px;
-    padding-bottom: 35px;
+    padding: 1rem 0;
   }
 
   .scroll-header {
@@ -231,15 +230,20 @@
     box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.7);
   }
 
-  .navbar-header .site-title {
-    padding-left: 15px;
+  .navbar-header {
+    padding-left: 2rem;
   }
 
   /* Navigation */
 
-
   .main-menu {
     display: none;
+  }
+
+  .slicknav_icon {
+    position: absolute;
+    top: -1.8rem;
+    right: 1rem;
   }
 
   .slicknav_menu,
@@ -436,6 +440,7 @@
   }
 
   /* Section: Services */
+
   .section-services .subheading-text {
     margin-bottom: 20px;
   }
@@ -647,6 +652,12 @@
 @media only screen and (max-width: 479px) {
   /* SITEMAIN */
 
+  .service-row {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
   .section-services .col-xs-6 {
     width: 100%;
   }
@@ -660,8 +671,13 @@
     width: 100%;
   }
 
-  .section-portfolio .col-xs-6:not(:first-child) .portfolio-item {
-    margin-top: 0;
+  .section-portfolio .portfolio-item {
+    margin-top: 2rem;
+  }
+
+  .section-portfolio .img-res {
+    object-position: center;
+    object-fit: cover;
   }
 
   .section-portfolio .col-xs-6:nth-child(odd),

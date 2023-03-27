@@ -667,7 +667,7 @@ body {
 
 .site-header {
   position: fixed;
-  padding: 50px 0 0;
+  padding: 15px 0 15px;
   width: 100%;
   z-index: 3;
 }

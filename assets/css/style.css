@@ -953,18 +953,6 @@ body {
   background-color: #267df4;
 }
 
-/* Section: Features */
-.section-features h2 {
-  padding-bottom: 40px;
-  font-size: 30px;
-}
-
-.section-features img {
-  position: absolute;
-  right: 15px;
-  height: 380px;
-}
-
 /* Section: Services */
 .section-services .subheading-text {
   margin-bottom: 90px;
@@ -991,6 +979,17 @@ body {
 
 .service-info {
   font-size: 13px;
+}
+/* Section: Features */
+.section-features h2 {
+  padding-bottom: 40px;
+  font-size: 30px;
+}
+
+.section-features img {
+  position: absolute;
+  right: 15px;
+  height: 380px;
 }
 
 /* Section: Map Feature */
@@ -1057,6 +1056,7 @@ body {
 
 .portfolio-item-title,
 .portfolio-item-deskripsi,
+.portfolio-item-author,
 .portfolio-item a {
   position: absolute;
   left: 0px;
@@ -1083,12 +1083,25 @@ body {
   -o-transition: left 0.25s ease-in-out, opacity 0.25s ease-in-out;
   -ms-transition: left 0.25s ease-in-out, opacity 0.25s ease-in-out;
 }
+.portfolio-item-author {
+  width: 150px;
+  bottom: 15px;
+  transition: left 0.25s ease-in-out, opacity 0.25s ease-in-out;
+  -moz-transition: left 0.25s ease-in-out, opacity 0.25s ease-in-out;
+  -webkit-transition: left 0.25s ease-in-out, opacity 0.25s ease-in-out;
+  -o-transition: left 0.25s ease-in-out, opacity 0.25s ease-in-out;
+  -ms-transition: left 0.25s ease-in-out, opacity 0.25s ease-in-out;
+}
 
 .portfolio-item:hover .portfolio-item-title {
   left: 15px;
   opacity: 1;
 }
 .portfolio-item:hover .portfolio-item-deskripsi {
+  left: 15px;
+  opacity: 1;
+}
+.portfolio-item:hover .portfolio-item-author {
   left: 15px;
   opacity: 1;
 }
@@ -1705,4 +1718,41 @@ a {
   font-size: 0.875rem;
   line-height: 1.5;
   border-radius: 0.2rem;
+}
+
+/*--------------------------------------------------------------
+# Services
+--------------------------------------------------------------*/
+.services .service-box {
+  box-shadow: 0px 0 30px rgba(1, 41, 112, 0.08);
+  height: 100%;
+  padding: 60px 30px;
+  text-align: center;
+  transition: 0.3s;
+  border-radius: 5px;
+}
+
+
+.services .service-box h3 {
+  color: #444444;
+  font-weight: 700;
+}
+
+.services .service-box.blue {
+  border-bottom: 3px solid #000;
+}
+
+
+.services .service-box.blue:hover {
+  background: #d6d6d6;
+}
+
+.services .service-box:hover h3,
+.services .service-box:hover p,
+.services .service-box:hover .read-more {
+  color: #000;
+}
+
+.services .service-box:hover .icon {
+  background: #fff;
 }

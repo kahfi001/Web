@@ -58,6 +58,113 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <style>
+      .book {
+        transition: opacity 0.4s 0.2s;
+      }
+      .page {
+        width: 40vw;
+        height: 55vw;
+        float: left;
+        margin-bottom: 0.5em;
+        background: top no-repeat;
+        background-size: cover;
+      }
+      .page:nth-child(even) {
+        clear: both;
+      }
+      .book {
+        perspective: 250vw;
+      }
+      .book .pages {
+        width: 80vw;
+        height: 55vw;
+        position: relative;
+        transform-style: preserve-3d;
+        backface-visibility: hidden;
+        border-radius: 4px;
+      }
+      .book .page {
+        float: none;
+        clear: none;
+        margin: 0;
+        position: absolute;
+        top: 0;
+        width: 40vw;
+        height: 55vw;
+        transform-origin: 0 0;
+        transition: transform 1.4s;
+        backface-visibility: hidden;
+        transform-style: preserve-3d;
+        cursor: pointer;
+        user-select: none;
+        background-color: #f0f0f0;
+      }
+      .book .page:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        transition: background 0.7s;
+        z-index: 2;
+      }
+      .book .page:nth-child(odd) {
+        pointer-events: all;
+        transform: rotateY(0deg);
+        right: 0;
+        border-radius: 0 4px 4px 0;
+      }
+      .book .page:nth-child(odd):hover {
+        transform: rotateY(-15deg);
+      }
+      .book .page:nth-child(odd):hover:before {
+        background: rgba(0, 0, 0, 0.03);
+      }
+      .book .page:nth-child(odd):before {
+        background: rgba(0, 0, 0, 0);
+      }
+      .book .page:nth-child(even) {
+        pointer-events: none;
+        transform: rotateY(180deg);
+        transform-origin: 100% 0;
+        left: 0;
+        border-radius: 4px 0 0 4px;
+        border-color: black;
+      }
+      .book .page:nth-child(even):before {
+        background: rgba(0, 0, 0, 0.2);
+      }
+      .book .page.grabbing {
+        transition: none;
+      }
+      .book .page.flipped:nth-child(odd) {
+        pointer-events: none;
+        transform: rotateY(-180deg);
+      }
+      .book .page.flipped:nth-child(odd):before {
+        background: rgba(0, 0, 0, 0.2);
+      }
+      .book .page.flipped:nth-child(even) {
+        pointer-events: all;
+        transform: rotateY(0deg);
+      }
+      .book .page.flipped:nth-child(even):hover {
+        transform: rotateY(15deg);
+      }
+      .book .page.flipped:nth-child(even):hover:before {
+        background: rgba(0, 0, 0, 0.03);
+      }
+      .book .page.flipped:nth-child(even):before {
+        background: rgba(0, 0, 0, 0);
+      }
+      *,
+      * :before,
+      *:after {
+        box-sizing: border-box;
+      }
+    </style>
   </head>
   <body>
     <header id="masthead" class="site-header">
@@ -79,8 +186,8 @@
               </li> -->
               <!-- <li><a href="product.html">Product</a></li> -->
               <!-- <li><a href="blog.html">Blog</a></li> -->
-              <li class="active"><a href="contact.html">Contact</a></li>
-              <li><a href="book.html">Price List</a></li>
+              <li class=""><a href="contact.html">Contact</a></li>
+              <li class="active"><a href="book.html">Price List</a></li>
               <!-- <li><a href="ui-elements.html">UI Elements</a></li> -->
             </ul>
           </div>
@@ -92,74 +199,22 @@
     <main id="main" class="site-main">
       <section class="site-section subpage-site-section section-contact-us">
         <div class="container">
-          <div class="row">
-            <div class="col-sm-7">
-              <h2>Lokasi</h2>
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3957.361300333423!2d112.72735747405974!3d-7.313247071905095!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7fb115b09bc7b%3A0xd07c3bffe4c59cf!2sOembah%20Shoes%20-%20Jasa%20Cuci%20Sepatu%20Surabaya!5e0!3m2!1sen!2sid!4v1684499397260!5m2!1sen!2sid"
-                width="600"
-                height="450"
-                style="border: 0"
-                allowfullscreen=""
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
-              ></iframe>
-              <!-- <form>
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                      <label for="name">Nama:</label>
-                                      <input type="text" class="form-control" id="name">
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                      <label for="email">E-mail:</label>
-                                      <input type="email" class="form-control" id="email">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                              <label for="message">Subjek:</label>
-                              <input class="form-control" id="subject"></input>
-                            </div>
-                            <div class="form-group">
-                              <label for="message">Pesan:</label>
-                              <textarea class="form-control form-control-comment" id="message"></textarea>
-                            </div>
-                            <div class="text-center">
-                                <button class="btn btn-green">Kirim pesan</button>
-                            </div>
-                        </form> -->
-            </div>
-            <div class="col-sm-5">
-              <div class="contact-info">
-                <h2>Informasi Kontak</h2>
-                <div class="row">
-                  <div class="col-sm-12">
-                    <h3>Alamat</h3>
-                    <ul class="list-unstyled">
-                      <li>Jl. Ketintang Timur PTT Gg. V B No.2</li>
-                      <li>Surabaya, Jawa Timur</li>
-                    </ul>
-                    <h3>Instagram</h3>
-                    <a
-                      href="https://www.instagram.com/oembah.shoes/"
-                      target="_blank"
-                      >Oembah Shoes</a
-                    >
-                    <h3>E-mail</h3>
-                    <a href="mailto:pixelperfectmk@gmail.com" target="_blank"
-                      >oembahshoes@gmail.com</a
-                    >
-                    <h3>Phone</h3>
-                    <a href="tel:2083339296" target="_blank"
-                      >+62 899 6759 034</a
-                    >
-                  </div>
-                </div>
+          <div class="book">
+            <div id="pages" class="pages">
+              <div
+                class="page img-thumbnail"
+                style="background-image: url('assets/img/sepatu.jpg')"
+              >
+                <h1 class="text-center">Price List</h1>
               </div>
-              <!-- /.contact-info -->
+              <div
+                class="page"
+                style="background-image: url('assets/img/pricelist1.jpg')"
+              ></div>
+              <div
+                class="page"
+                style="background-image: url('assets/img/pricelist2.jpg')"
+              ></div>
             </div>
           </div>
         </div>
@@ -247,6 +302,31 @@
     </footer>
     <!-- /#footer -->
 
+    <script>
+      var pages = document.getElementsByClassName("page");
+      for (var i = 0; i < pages.length; i++) {
+        var page = pages[i];
+        if (i % 2 === 0) {
+          page.style.zIndex = pages.length - i;
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        for (var i = 0; i < pages.length; i++) {
+          //Or var page = pages[i];
+          pages[i].pageNum = i + 1;
+          pages[i].onclick = function () {
+            if (this.pageNum % 2 === 0) {
+              this.classList.remove("flipped");
+              this.previousElementSibling.classList.remove("flipped");
+            } else {
+              this.classList.add("flipped");
+              this.nextElementSibling.classList.add("flipped");
+            }
+          };
+        }
+      });
+    </script>
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
